@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="terminal_heat_sink.airtriggers">
+<!--    <protected-broadcast android:name="com.asus.airtriggers.NOTIFY_TAP_UI_STATE_CHANGE"></protected-broadcast>-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <uses-permission android:name="com.asus.launcher.permission.CATEGORY_ACCESS"/>
+    <uses-permission android:name="com.asus.focusapplistener.permission.GAME_GENIE_PROVIDER"/>
+    <uses-permission android:name="com.asus.airtriggers.gripsensor.PROVIDER"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".TapReciever"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.asus.airtriggers.NOTIFY_TAP_UI_STATE_CHANGE"></action>
+                <action android:name="com.asus.airtriggers.NOTIFY_TAP_ANIMATE"></action>
+                <action android:name="com.asus.airtriggers.SYSTEMUI_AIR_TRIGGER_ON"/>
+                <action android:name="com.asus.airtriggers.SYSTEMUI_AIR_TRIGGER_OFF"/>
+                <action android:name="com.asus.airtriggers.NOTIFY_TAP_SIDE"/>
+                <action android:name="com.asus.airtriggers.NOTIFY_TAP_TEST_PAGE"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
